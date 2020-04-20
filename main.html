@@ -1,0 +1,7 @@
+<!DOCTYPE html><html><head><title>IR Control</title><script type="text/javascript">
+var CNN=new WebSocket('ws://192.168.1.100:81', ['arduino']);CNN.onopen=function(){CNN.send('Connect ' + new Date());};
+CNN.onerror=function (error) {console.log('WebSocket Error ', error);};
+CNN.onmessage=function (e) {console.log('Server: ', e.data);var b=document.getElementById('code');
+var parsed = parseInt(e.data, 16); b.innerHTML=parsed + " 0x" + e.data.toUpperCase();;};
+CNN.onclose=function(){console.log('WebSocket CNN closed');};
+</script></head><body><center><header><h1>IR Control</h1></header><div><p id="code"></p></div></center></body></html>
